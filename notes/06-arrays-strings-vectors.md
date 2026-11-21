@@ -144,8 +144,10 @@ for (int i = 0; i < (int)s.size() / 2; i++)
 // ① 翻转一段
 reverse(a.begin(), a.begin() + k);           // 前 k 个翻转（迭代器右端是"开区间"）
 
-// ② 循环左移 k 位（三次翻转法，O(n) 且不用额外数组）
-rotateLeft(v.begin(), v.begin() + k, v.end());   // 标准库直接有，等价
+// ② 循环左移 k 位：标准库直接有，就是 std::rotate
+rotate(v.begin(), v.begin() + k, v.end());   // {1,2,3,4,5} k=2 -> {3,4,5,1,2}
+// 不用 rotate 的话，三次翻转法等价：
+// reverse(v.begin(), v.begin()+k); reverse(v.begin()+k, v.end()); reverse(v.begin(), v.end());
 
 // ③ 去重（必须先排序）
 sort(v.begin(), v.end());
@@ -153,7 +155,7 @@ v.erase(unique(v.begin(), v.end()), v.end());    // 这是"擦除-识别"惯用�
 int distinctCount = (int)v.size();
 ```
 
-注意 STL 里几乎所有区间都是**左闭右开** `[begin, end)`，所以"前 k 个"写作 `[begin, begin+k)`。这个约定贯穿 `sort`/`unique`/`lower_bound`/`substr`。
+注意 STL 里几乎所有区间都是**左闭右开** `[begin, end)`，所以"前 k 个"写作 `[begin, begin+k)`。这个约定贯穿 `sort`/`reverse`/`unique`/`lower_bound`。**唯一的例外要记住**：`substr(pos, len)` 给的是「起点 + 个数」，不是 `[pos, pos+len)` 那对迭代器——因为 string 的下标参数天生是数字而不是迭代器。
 
 ---
 

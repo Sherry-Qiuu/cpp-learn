@@ -54,7 +54,10 @@ cpp-learn/
 │   ├── score_report/      项目 1：多文件成绩报表（练工程化、分离编译）
 │   └── maze_runner/       项目 2：迷宫求解（DFS + BFS + 连通块收官）
 ├── build/                 编译产物（可随时整个删掉，不进仓库）
-└── .vscode/               编译 / 调试 / 严格模式任务，已配好复用现成 g++
+├── .vscode/               编译 / 调试 / 严格模式任务，已配好复用现成 g++
+├── .gitignore             只提交人写的东西：build/、*.exe、*.o、*.d、*.s 全排除
+├── .gitattributes         换行符固定 LF（Makefile 用 CRLF 会报 missing separator）
+└── LICENSE                MIT
 ```
 
 ---
