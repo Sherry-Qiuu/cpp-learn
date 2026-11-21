@@ -139,7 +139,7 @@ VS Code 里：打开 `cpp-learn` 文件夹，`Ctrl+Shift+B` 编译当前文件�
 1. **每个练习末尾有自测断言，全部 assert 通过才算做完。** 失败会打印 `Assertion failed: ... file ..., line ...`，照着行号看，它比你的直觉可靠。
 2. **卡住先自己想 20 分钟**，再翻文件末尾的 `参考答案` 注释块。答案块里除了代码还有几段「为什么要这样写」，那部分才是价值。
 3. 每写完一个练习，`make run/exNN` 必须**零警告**通过。**警告一个都别放过**——`-Wall -Wextra -Wpedantic` 报出来的每一条，在竞赛里是 WA，在单片机上是死机。**不要用 `-w` 把警告关掉。**
-4. 想再看紧一点就用 `make strict/exNN`（多开 `-Wconversion -Wsign-conversion -Wshadow -fanalyzer`）。它会报一堆 `int`↔`size_t` 的转换警告，这是**信号不是错误**，逐条判断哪些要改、哪些是教学代码故意留的。
+4. 想再看紧一点就用 `make strict/exNN`（多开 `-Wconversion -Wsign-conversion -Wshadow -Wcast-qual -fanalyzer`）。它会报一堆 `int`↔`size_t` 的转换警告，这是**信号不是错误**，逐条判断哪些要改、哪些是教学代码故意留的。
 5. 所有代码用 `-std=c++17`。课堂在线 IDE 是 GCC 13.1.0，本机是 16.1.0，这个标准两边一致。
 6. 没实现 TODO 之前会有一堆 `unused parameter` 警告。**这是故意的信号**，别用 `(void)x` 把它按下去。写实现的格式：把「TODO 在这里写实现」注释行和它下面那行占位 `return` 一起替换掉。
 7. 每个练习的 `cout` 观察题：**先在纸上写答案，再跑**。跑出来的和你猜的不一样，那一条才是你今天真正学到的。
